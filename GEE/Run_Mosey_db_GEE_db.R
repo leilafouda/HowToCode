@@ -5,7 +5,9 @@
 #3. add the data to db
 #4. validate
 
-#### Create a new database ####
+########################################
+######## Create a new database ########
+########################################
 #Shell
 #See wf_create_db.sh for example script.
 
@@ -24,6 +26,10 @@ cd $wd
 
 cat $MOSEYDB_SRC/create_db.sql | sqlite3 mosey.db
 
+################################################
+######## Get data into the new database ########
+################################################
+
 #run in terminal:
 #shell
 wd=/Users/laf72/projects/Protected-Area-Movement
@@ -36,6 +42,11 @@ cd $wd
 #import data to the db created above (import_study.R)
 #validate data that was imported to database (validate_import.R)
 sh /Users/laf72/projects/Protected-Area-Movement/analysis/src/hpc/load_studies.sh
+
+
+#################################################
+######## Get data from db to GEE via GCS ########
+#################################################
 
 #Once you have the data in the db you can use gee_ingest.sh to:
 #1. export csv want
@@ -55,6 +66,10 @@ cd $wd
 
 /Users/laf72/projects/Protected-Area-Movement/analysis/src/hpc/gee_ingest.sh $sesnm $geePtsP $gcsURL $db $outP
 
+########################################################
+######### Get annotated on GEE and back to GCS #########
+########################################################
+
 # THEN
 #1. annotate data in GEE using gee_anno_updated
 #gee_anno.r <dat> <out> [--groups=<groups>] [--npts=<npts>] [--seed=<seed>] 
@@ -63,6 +78,10 @@ cd $wd
 #  out: path to output directory and file on gcs. do not include file extension, url info or bucket
 
 Rscript /Users/laf72/projects/Protected-Area-Movement/analysis/src/workflow/gee_anno_updated.R projects/ee-lfouda-001/assets/pa-gee-anno leila/projects/six_study_data_annotated
+
+#######################################################
+########### Get annotated from GCS into db ############
+#######################################################
 
 #Then import_anno.sh to get data from GCS to db
 chmod 744 /Users/laf72/projects/Protected-Area-Movement/analysis/src/hpc/import_anno.sh

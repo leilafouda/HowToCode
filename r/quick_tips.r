@@ -19,7 +19,7 @@ dataframe_02 <- dataframe_01 %>%
 
 #Want to prevent scientfic notation i.e.
 #Show 100000 rather than 1e5:
-options("scipen" = 10) # sets it to 10 dp
+options("scipen" = 10) # sets it to 10 
 options()$scipen # tells you what it is set to
 # can also  just set to very large number so see all values e.g.
 options(scipen=999)

@@ -16,3 +16,12 @@ filter(COLUMN %in%  c('ID1','ID2','ID3'))
 dataframe_02 <- dataframe_01 %>%
   filter(Column_01 %in% c('Name_02', 
                           'Name_06', 'Name_08'))
+
+#Want to prevent scientfic notation i.e.
+#Show 100000 rather than 1e5:
+options("scipen" = 10) # sets it to 10 dp
+options()$scipen # tells you what it is set to
+# can also  just set to very large number so see all values e.g.
+options(scipen=999)
+#reset with
+options(scipen=0)

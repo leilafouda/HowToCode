@@ -1,3 +1,12 @@
+# Need a BOOST!?!
+library(praise)
+praise()
+#Also:
+## Capitalization
+praise("${Exclamation}! This ${rpackage} is ${adjective}!")
+## All upper case
+praise("${EXCLAMATION}! You have done this ${adverb_manner}!")
+
 #To put on multiple lines a long file name--------
 #rather than:
 
